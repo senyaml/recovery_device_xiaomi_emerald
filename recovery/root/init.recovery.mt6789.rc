@@ -1,0 +1,238 @@
+import /init.recovery.project.rc
+
+on init
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller "musb-hdrc"
+    setprop sys.usb.ffs.aio_compat 0
+
+on fs && property:ro.debuggable=0
+    # distinguish USB shoulde connect or not, i.e. CDP vs SDP
+    # write /sys/class/udc/musb-hdrc/device/cmode 2
+    # set charging free due to it wait for USB activation
+    start adbd
+
+on boot
+    exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
+
+
+on init
+    # Create a more standard /dev/block layout for our scripts
+    symlink /dev/block/platform/bootdevice /dev/block/bootdevice
+    mkdir /persist 0700 root root
+    mount ext4 /dev/block/by-name/persist /persist
+    mkdir /persist/OFRP
+    export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller "musb-hdrc"
+    setprop sys.usb.ffs.aio_compat 1
+    setprop crypto.ready 1
+
+# For vibrator
+    write /sys/class/leds/awinic_vibrator/trigger "transient"
+    chown system system /sys/class/leds/vibrator/trigger
+    chown system system /sys/class/leds/awinic_vibrator/vibrator/activate
+    chown system system /sys/class/leds/awinic_vibrator/brightness
+    chown system system /sys/class/leds/awinic_vibrator/vibrator/duration
+    chown system system /sys/class/leds/awinic_vibrator/vibrator/state
+
+#flashlight
+    chown system system /sys/class/leds/flashlight/trigger
+    chown system system /sys/class/leds/flashlight/brightness
+    chown system system /sys/class/leds/flashlight/max_brightness
+
+    chown system system /sys/class/leds/torch-light0/trigger
+    chown system system /sys/class/leds/torch-light0/brightness
+    chown system system /sys/class/leds/torch-light0/max_brightness
+    
+on fs
+    install_keyring
+
+on init
+    setprop sys.usb.configfs 1
+    setprop sys.usb.controller "musb-hdrc"
+    setprop sys.usb.ffs.aio_compat 0
+    export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
+    setprop crypto.ready 1
+
+on fs && property:ro.debuggable=0
+    write /sys/class/udc/musb-hdrc/device/cmode 2
+    start adbd
+
+on fs
+    install_keyring
+    wait /dev/block/platform/soc/11270000.ufshci
+    symlink /dev/block/platform/soc/11270000.ufshci /dev/block/bootdevice
+
+# We need vold early for metadata encryption
+on early-fs
+    start vold
+
+on late-fs
+    # Mount RW partitions which need run fsck
+    mount_all /first_stage_ramdisk/fstab.mt6789 --late
+
+on post-fs
+    start boot-hal-1-2
+
+    symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
+    symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
+
+on boot
+    start mtk.plpath.utils.link
+
+on property:persist.vendor.mtk.pl_lnk=1
+    symlink /dev/block/mapper/pl_a /dev/block/by-name/preloader_raw_a
+    symlink /dev/block/mapper/pl_b /dev/block/by-name/preloader_raw_b
+    symlink /dev/block/mapper/pl_a /dev/block/platform/bootdevice/by-name/preloader_raw_a
+    symlink /dev/block/mapper/pl_b /dev/block/platform/bootdevice/by-name/preloader_raw_b
+
+# FSTAB_RAW2(lk2,bootloader2) of fstab.in.emmc, but without bootloader2 mount point
+    symlink /dev/block/by-name/lk1 /dev/block/by-name/bootloader1
+    symlink /dev/block/by-name/lk2 /dev/block/by-name/bootloader2
+
+# Fix ro.vendor.mtk_ufs_support remove issue of recovery mode
+on property:vendor.mtk.boot0_linka=1
+    symlink /dev/block/sda /dev/block/mmcblk0boot0
+
+on property:vendor.mtk.boot0_linkb=1
+    symlink /dev/block/sdb /dev/block/mmcblk0boot0
+
+on property:vendor.mtk.boot0_linkc=1
+    symlink /dev/block/sdc /dev/block/mmcblk0boot0
+
+on property:vendor.mtk.boot1_linka=1
+    symlink /dev/block/sda /dev/block/mmcblk0boot1
+
+on property:vendor.mtk.boot1_linkb=1
+    symlink /dev/block/sdb /dev/block/mmcblk0boot1
+
+on property:vendor.mtk.boot1_linkc=1
+    symlink /dev/block/sdc /dev/block/mmcblk0boot1
+
+service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
+    class main
+    user root
+    group root system
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+    
+on boot
+    chown system system /dev/xiaomi-touch
+    chmod 0664 /dev/xiaomi-touch
+    chown system system /sys/class/touch/touch_dev/fod_press_status
+    chmod 0664 /sys/class/touch/touch_dev/fod_press_status
+
+service touchfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@1.0-service
+    class main
+    user root
+    group root
+    onrestart restart touchfeature-hal-1-0
+    seclabel u:r:recovery:s0
+    
+    
+service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@1.0-service.mitee
+    interface android.hardware.keymaster@4.0::IKeymasterDevice default
+    interface android.hardware.keymaster@4.1::IKeymasterDevice default
+    user root
+    group root drmrpc
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service vendor.vibratorfeature-default /vendor/bin/hw/android.hardware.vibratorfeature-service.mediatek
+    class hal
+    user root
+    group root system
+    seclabel u:r:recovery:s0
+
+service mountfix /sbin/sh /system/bin/mount.sh
+    user root
+    group root
+    oneshot
+    disabled
+    seclabel u:r:recovery:s0
+    
+on property:sys.usb.ffs.ready=1
+    start mountfix
+
+on property:hwservicemanager.ready=true
+    start teei_daemon
+    start gatekeeper-1-0
+    start keymint-mitee
+    start keymaster
+    
+    
+on property:crypto.ready=1
+    start vendor.keymint-mitee
+
+on property:hwservicemanager.ready=true
+    start mobicore
+    start vendor.gatekeeper-1-0
+    start vendor.keymint-mitee
+
+on property:ro.crypto.state=unsupported
+    stop mobicore
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-mitee
+
+on property:ro.crypto.state=unencrypted
+    stop mobicore
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-mitee
+
+on property:twrp.decrypt.done=true
+    stop mobicore
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-mitee
+
+on property:crypto.ready=0
+    stop mobicore
+    stop vendor.gatekeeper-1-0
+    stop vendor.keymint-mitee
+
+on post-fs-data
+    mkdir /data/vendor_de 0770 system system
+    mkdir /data/vendor_de/0 0770 system system
+    mkdir /data/vendor_de/0/cryptoeng 0770 system system
+
+    start health-hal-2-1
+    setprop sys.usb.config adb
+
+on boot
+    start health-hal-2-1
+    start vendor.vibratorfeature-default
+    setprop sys.usb.config adb
+
+
+service modules_mount /system/bin/modules_mount.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+on property:twrp.decrypt.done=true
+    start modules_mount
