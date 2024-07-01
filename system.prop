@@ -1,1 +1,2 @@
 ro.hardware.gatekeeper=mitee
+vendor.gatekeeper.disable_spu=true
