@@ -17,6 +17,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # V A/B
 ENABLE_VIRTUAL_AB := true
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
 
 # Bootctrl
 PRODUCT_PACKAGES += \
@@ -84,12 +85,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mtk_plpath_utils.recovery
 
+# Keystore Hal
+PRODUCT_PACKAGES += \
+    android.system.keystore2
+
+# Security
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint \
+    android.hardware.security.secureclock \
+    android.hardware.security.sharedsecret
+
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
     libpuresoftkeymasterdevice \
-    android.hardware.keymaster@4.1 \
-    android.hardware.keymaster@4.0
+    android.hardware.keymaster@4.1
 
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
@@ -97,9 +107,9 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so \
 
-TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlight-mt6789.ko xiaomi.ko"
+TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlights-mt6789.ko xiaomi.ko"
 
 # Vendor ramdisk
 PRODUCT_COPY_FILES += \
