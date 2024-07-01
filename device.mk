@@ -99,6 +99,7 @@ PRODUCT_PACKAGES += \
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
     libpuresoftkeymasterdevice \
+    
 
 # Keymaster
 PRODUCT_PACKAGES += \
