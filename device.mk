@@ -52,7 +52,6 @@ AB_OTA_PARTITIONS += \
     product \
     system \
     system_ext \
-    mi_ext \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor \
