@@ -21,7 +21,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_ven
 # Bootctrl
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl \
+    android.hardware.boot@1.1-mtkimpl \
+    android.hardware.boot@1.0-mtkimpl \
     android.hardware.boot@1.2-mtkimpl.recovery \
+    android.hardware.boot@1.1-mtkimpl.recovery \
+    android.hardware.boot@1.0-mtkimpl.recovery \
     bootctrl
 
 #PRODUCT_PACKAGES_DEBUG += \
