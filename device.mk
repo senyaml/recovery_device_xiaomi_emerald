@@ -87,7 +87,9 @@ PRODUCT_PACKAGES += \
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
-    libpuresoftkeymasterdevice
+    libpuresoftkeymasterdevice \
+    android.hardware.keymaster@4.1 \
+    android.hardware.keymaster@4.0
 
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
@@ -95,8 +97,9 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1
 
-TW_LOAD_VENDOR_MODULES := "ft3683g.ko xiaomi.ko"
+TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlight-mt6789.ko xiaomi.ko"
 
 # Vendor ramdisk
 PRODUCT_COPY_FILES += \
