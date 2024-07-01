@@ -213,6 +213,12 @@ on property:crypto.ready=0
     stop vendor.gatekeeper-1-0
     stop vendor.keymint-mitee
 
+on property:twrp.all.users.decrypted=true
+    stop mobicore
+    stop keymint-mitee
+    stop gatekeeper-1-0
+    stop keymaster
+
 on post-fs-data
     mkdir /data/vendor_de 0770 system system
     mkdir /data/vendor_de/0 0770 system system
