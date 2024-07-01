@@ -1,6 +1,4 @@
 mkp.ko
-flashlight.ko
-flashlight-mt6789.ko
 bootprof.ko
 dbgtop-drm.ko
 mrdump.ko
@@ -190,7 +188,6 @@ tee.ko
 xiaomi_spi_tee.ko
 xiaomi.ko
 ft3683g.ko
-gt9916.ko
 mi_thermal_message.ko
 hq_CPU_temp.ko
 hq_charge_temp.ko
