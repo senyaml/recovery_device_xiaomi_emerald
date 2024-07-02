@@ -198,6 +198,10 @@ TWRP_INCLUDE_LOGCAT := true
 # Haptics
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
 # Apex
 TW_EXCLUDE_APEX=true
 
