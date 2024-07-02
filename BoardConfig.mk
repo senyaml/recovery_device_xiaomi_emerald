@@ -198,10 +198,12 @@ TWRP_INCLUDE_LOGCAT := true
 # Haptics
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_emerald
+TARGET_RECOVERY_DEVICE_MODULES := libinit_emerald
+
 # Apex
 TW_EXCLUDE_APEX=true
 
 # Maintainer specific settings
 #TW_DEVICE_VERSION := @senyaml
-
-BOARD_RECOVERY_KERNEL_MODULES_LOAD :="ft3683g xiaomi.ko"
