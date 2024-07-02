@@ -183,12 +183,6 @@ mtk-pm-domain-disable-unused.ko
 sec.ko
 uload_ind.ko
 load_track.ko
-ft3683g.ko
-xiaomi.ko
-gt9916.ko
-haptic.ko
-flashlight.ko
-flashlights-mt6789.ko
 mitee.ko
 tee.ko
 xiaomi_spi_tee.ko
