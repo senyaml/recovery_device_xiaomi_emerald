@@ -203,3 +203,5 @@ TW_EXCLUDE_APEX=true
 
 # Maintainer specific settings
 #TW_DEVICE_VERSION := @senyaml
+
+BOARD_RECOVERY_KERNEL_MODULES_LOAD :="ft3683g xiaomi.ko"
