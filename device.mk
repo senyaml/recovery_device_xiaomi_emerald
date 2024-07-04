@@ -120,7 +120,3 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.keymaster@4.1 \
     android.hardware.keymaster@4.1.so
 
-# Vendor ramdisk
-PRODUCT_COPY_FILES += \
-     device/xiaomi/emerald/fstab.mt6789:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.mt6789 
-
