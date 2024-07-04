@@ -114,7 +114,7 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0
 
-TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlights-mt6789.ko xiaomi.ko"
+TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlights-mt6789.ko xiaomi.ko haptic.ko fshaptic_0.ko"
 
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.keymaster@4.0 \
