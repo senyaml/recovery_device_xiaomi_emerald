@@ -50,7 +50,7 @@ git clone https://android.googlesource.com/platform/external/gflags/ -b android-
     export FOX_DELETE_MAGISK_ADDON=1
     export FOX_DELETE_AROMAFM=1
     export FOX_ENABLE_APP_MANAGER=1
-    export FOX_SETTINGS_ROOT_DIRECTORY=/persist/OFRP
+    export FOX_SETTINGS_ROOT_DIRECTORY=/mnt/vendor/persist/OFRP
     export FOX_RESET_SETTINGS=1
 
     #OFR binary files
