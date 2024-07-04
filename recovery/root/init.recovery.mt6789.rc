@@ -167,13 +167,6 @@ service vendor.vibratorfeature-default /vendor/bin/hw/android.hardware.vibratorf
     user root
     group root system
     seclabel u:r:recovery:s0
-
-service mountfix /sbin/sh /system/bin/mount.sh
-    user root
-    group root
-    oneshot
-    disabled
-    seclabel u:r:recovery:s0
     
 on property:sys.usb.ffs.ready=1
     start mountfix
@@ -231,14 +224,6 @@ on boot
     start health-hal-2-1
     start vendor.vibratorfeature-default
     setprop sys.usb.config adb
-
-
-service modules_mount /system/bin/modules_mount.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
 
 on property:twrp.decrypt.done=true
     start modules_mount
