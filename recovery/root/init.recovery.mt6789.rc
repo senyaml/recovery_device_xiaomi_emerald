@@ -162,6 +162,12 @@ service vendor.vibratorfeature-default /vendor/bin/hw/android.hardware.vibratorf
     user root
     group root system
     seclabel u:r:recovery:s0
+
+service keystore2 /system/bin/keystore2 /data/misc/keystore
+    class early_hal
+    user keystore
+    group keystore readproc log
+    writepid /dev/cpuset/foreground/tasks
     
 on property:sys.usb.ffs.ready=1
     start mountfix
