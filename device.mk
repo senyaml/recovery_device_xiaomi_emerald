@@ -103,20 +103,20 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1 \
-    android.hardware.keymaster@4.1.so
+    android.hardware.keymaster@4.0 \
+    android.hardware.keymaster@4.0.so
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0
 
 TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlights-mt6789.ko xiaomi.ko"
 
 TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.1 \
-    android.hardware.keymaster@4.1.so
+    android.hardware.keymaster@4.0 \
+    android.hardware.keymaster@4.0.so
 
