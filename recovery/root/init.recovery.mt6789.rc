@@ -135,7 +135,14 @@ service touchfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@
     group root
     onrestart restart touchfeature-hal-1-0
     seclabel u:r:recovery:s0
-    
+
+service snapuserd /system/bin/snapuserd
+    socket snapuserd stream 0660 system system
+    oneshot
+    disabled
+    user root
+    group root system
+    seclabel u:r:snapuserd:s0
     
 service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
