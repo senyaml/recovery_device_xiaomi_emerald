@@ -42,6 +42,10 @@ on init
 on fs
     install_keyring
 
+on post-fs-data
+    mkdir /data/misc/recovery 0770 system log
+    exec_background - system log -- /system/bin/recovery-persist
+
 on init
     setprop sys.usb.configfs 1
     setprop sys.usb.controller "musb-hdrc"
