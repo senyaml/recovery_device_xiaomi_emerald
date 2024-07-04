@@ -54,7 +54,7 @@ void model_property_override(const std::string& device, const std::string& name,
 }
 
 void vendor_load_properties() {
-    property_override("ro.product.name", "rock");
+    property_override("ro.product.name", "emerald");
     property_override("ro.bootimage.build.date.utc", "1609430400");
     property_override("ro.build.date.utc", "1609430400");
     const std::string sku = GetProperty("ro.boot.product.hardware.sku", "");
