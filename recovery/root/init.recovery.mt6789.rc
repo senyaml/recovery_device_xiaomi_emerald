@@ -85,6 +85,33 @@ service vendor.keymint-trustonic /vendor/bin/hw/android.hardware.security.keymin
     interface android.hardware.keymaster@4.1::IKeymasterDevice default
     user nobody
     seclabel u:r:recovery:s0
+	
+# For vibrator
+    write /sys/class/leds/awinic_vibrator/trigger "transient"
+    chown system system /sys/class/leds/vibrator/trigger
+    chown system system /sys/class/leds/awinic_vibrator/vibrator/activate
+    chown system system /sys/class/leds/awinic_vibrator/brightness
+    chown system system /sys/class/leds/awinic_vibrator/vibrator/duration
+    chown system system /sys/class/leds/awinic_vibrator/vibrator/state
+	
+service vendor.vibratorfeature-default /vendor/bin/hw/android.hardware.vibratorfeature-service.mediatek
+    class hal
+    user root
+    group root system
+    seclabel u:r:recovery:s0
+	
+on boot
+    chown system system /dev/xiaomi-touch
+    chmod 0664 /dev/xiaomi-touch
+    chown system system /sys/class/touch/touch_dev/fod_press_status
+    chmod 0664 /sys/class/touch/touch_dev/fod_press_status
+
+service touchfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.touchfeature@1.0-service
+    class main
+    user root
+    group root
+    onrestart restart touchfeature-hal-1-0
+    seclabel u:r:recovery:s0
 
 on property:crypto.ready=1
     start vendor.keymint-trustonic
