@@ -25,8 +25,8 @@ PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl.recovery \
     bootctrl
 
-#PRODUCT_PACKAGES_DEBUG += \
- #   bootctrl
+PRODUCT_PACKAGES_DEBUG += \
+    bootctrl
 
 # Fastbootd
 PRODUCT_PACKAGES += \
@@ -57,15 +57,21 @@ AB_OTA_PARTITIONS += \
     
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
 
+AB_OTA_POSTINSTALL_CONFIG += \
+    RUN_POSTINSTALL_vendor=true \
+    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
+    FILESYSTEM_TYPE_vendor=ext4 \
+    POSTINSTALL_OPTIONAL_vendor=true
+
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 32
+PRODUCT_TARGET_VNDK_VERSION := 31
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 31
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -77,8 +83,9 @@ PRODUCT_PACKAGES += \
     update_verifier \
     update_engine_sideload
 
-# MTK PlPath Utils
+# MTK plpath utils
 PRODUCT_PACKAGES += \
+    mtk_plpath_utils \
     mtk_plpath_utils.recovery
 
 # Keystore Hal
@@ -90,29 +97,20 @@ PRODUCT_PACKAGES += \
     android.hardware.security.keymint \
     android.hardware.security.secureclock \
     android.hardware.security.sharedsecret
-
-# Additional binaries & libraries needed for recovery
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libion \
-    libpuresoftkeymasterdevice \
     
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0 \
-    android.hardware.keymaster@4.0.so
+    android.hardware.keymaster@4.1
 
+# Additional configs
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libpuresoftkeymasterdevice.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0
 
 TW_LOAD_VENDOR_MODULES := "flashlight.ko ft3683g.ko flashlights-mt6789.ko xiaomi.ko haptic.ko fshaptic_o.ko"
 
 TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.0 \
-    android.hardware.keymaster@4.0.so
+    android.hardware.keymaster@4.1 
 
