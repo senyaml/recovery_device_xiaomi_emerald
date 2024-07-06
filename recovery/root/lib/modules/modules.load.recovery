@@ -185,8 +185,6 @@ uload_ind.ko
 load_track.ko
 mitee.ko
 tee.ko
-ft3683g.ko
-xiaomi.ko
 xiaomi_spi_tee.ko
 mi_thermal_message.ko
 hq_CPU_temp.ko
