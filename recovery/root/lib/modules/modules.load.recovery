@@ -186,7 +186,6 @@ load_track.ko
 mitee.ko
 tee.ko
 xiaomi_spi_tee.ko
-xiaomi.ko
 mi_thermal_message.ko
 hq_CPU_temp.ko
 hq_charge_temp.ko
