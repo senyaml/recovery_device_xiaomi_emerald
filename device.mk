@@ -87,28 +87,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mtk_plpath_utils \
     mtk_plpath_utils.recovery
-
-# Keystore Hal
-PRODUCT_PACKAGES += \
-    android.system.keystore2
-
-# Security
-PRODUCT_PACKAGES += \
-    android.hardware.security.keymint \
-    android.hardware.security.secureclock \
-    android.hardware.security.sharedsecret
     
-
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1
+    android.hardware.keymaster@4.0
 
 # Additional configs
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.1 \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0 \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so \
 
 TARGET_RECOVERY_DEVICE_MODULES += \
-    android.hardware.keymaster@4.1 
+    android.hardware.keymaster@4.0 
 
