@@ -32,6 +32,10 @@
         manifest.xml
 -->
 <manifest version="4.0" type="device" target-level="6">
+    <hal format="aidl" override="true">
+        <name>android.hardware.vibrator</name>
+        <fqname>IVibrator/vibratorfeature</fqname>
+    </hal>
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
