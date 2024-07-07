@@ -1,6 +1,8 @@
 import /init.tee-suppicant.rc
 import /init.miteelog.rc
 import /init.vibrator.rc
+import /init.vold.rc
+import /init.vdc.rc
 
 on init
     setprop sys.usb.configfs 1
