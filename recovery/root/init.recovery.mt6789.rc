@@ -83,7 +83,6 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
 service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint-service.mitee
     class early_hal
     interface android.hardware.keymaster@4.0::IKeymasterDevice default
-    interface android.hardware.keymaster@4.1::IKeymasterDevice default
     user nobody
     seclabel u:r:recovery:s0
 	
