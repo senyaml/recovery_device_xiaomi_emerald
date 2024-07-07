@@ -213,6 +213,8 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 TARGET_INIT_VENDOR_LIB := libinit_emerald
 TARGET_RECOVERY_DEVICE_MODULES := libinit_emerald
 
+TW_LOAD_VENDOR_MODULES := "ft3683g.ko xiaomi.ko flashlight.ko flashlights-mt6789.ko haptic.ko"
+
 # Apex
 TW_EXCLUDE_APEX=true
 
