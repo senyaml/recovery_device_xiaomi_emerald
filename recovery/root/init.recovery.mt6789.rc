@@ -101,7 +101,7 @@ service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint-se
     chown system system /sys/class/leds/awinic_vibrator/vibrator/duration
     chown system system /sys/class/leds/awinic_vibrator/vibrator/state
 	
-service vendor.vibratorfeature-default /vendor/bin/hw/android.hardware.vibratorfeature-service.mediatek
+service vendor.vibratorfeature /vendor/bin/hw/android.hardware.vibratorfeature-service.mediatek
     class hal
     user root
     group root system
