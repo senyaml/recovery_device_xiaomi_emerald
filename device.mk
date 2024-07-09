@@ -73,6 +73,12 @@ PRODUCT_TARGET_VNDK_VERSION := 31
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
 
+# Security
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint \
+    android.hardware.security.secureclock \
+    android.hardware.security.sharedsecret
+
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
@@ -91,6 +97,11 @@ PRODUCT_PACKAGES += \
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@4.0
+
+# Keystore Hal
+PRODUCT_PACKAGES += \
+    android.system.keystore2
+
 
 # Additional configs
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \

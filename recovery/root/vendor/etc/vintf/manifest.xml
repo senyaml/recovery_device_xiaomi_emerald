@@ -32,34 +32,6 @@
         manifest.xml
 -->
 <manifest version="4.0" type="device" target-level="6">
-       <hal format="aidl">
-        <name>android.system.keystore2</name>
-        <version>3</version>
-        <interface>
-            <name>IKeystoreService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="aidl">
-        <name>android.hardware.security.keymint</name>
-        <fqname>IKeyMintDevice/default</fqname>
-    </hal>
-    <hal format="aidl">
-        <name>android.hardware.security.keymint</name>
-        <fqname>IRemotelyProvisionedComponent/default</fqname>
-    </hal>
-    <hal format="aidl">
-    	<name>android.hardware.security.secureclock</name>
-    	<fqname>ISecureClock/default</fqname>
-    </hal>
-    <hal format="aidl">
-    	<name>android.hardware.security.sharedsecret</name>
-    	<fqname>ISharedSecret/default</fqname>
-    </hal>
-    <hal format="aidl" override="true">
-        <name>android.hardware.vibrator</name>
-        <fqname>IVibrator/vibratorfeature</fqname>
-    </hal>
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
