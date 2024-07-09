@@ -667,7 +667,7 @@
         <name>android.system.keystore2</name>
         <version>1</version>
         <fqname>IKeystoreService/default</fqname>
-</hal>
+   </hal>
     <sepolicy>
         <version>31.0</version>
     </sepolicy>
