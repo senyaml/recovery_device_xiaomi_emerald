@@ -32,6 +32,14 @@
         manifest.xml
 -->
 <manifest version="4.0" type="device" target-level="6">
+       <hal format="aidl">
+        <name>android.system.keystore2</name>
+        <version>3</version>
+        <interface>
+            <name>IKeystoreService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="aidl">
         <name>android.hardware.security.keymint</name>
         <fqname>IKeyMintDevice/default</fqname>

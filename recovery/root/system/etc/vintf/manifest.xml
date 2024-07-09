@@ -83,12 +83,9 @@
         </interface>
         <fqname>@1.0::IKeystore/default</fqname>
     </hal>
-    <hal format="native">
-        <name>netutils-wrapper</name>
-        <version>1.0</version>
-    </hal>
      <hal format="aidl">
         <name>android.system.keystore2</name>
+        <version>3</version>
         <interface>
             <name>IKeystoreService</name>
             <instance>default</instance>
