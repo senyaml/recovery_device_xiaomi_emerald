@@ -67,12 +67,6 @@ on property:vendor.mtk.boot1_linkb=1
 on property:vendor.mtk.boot1_linkc=1
     symlink /dev/block/sdc /dev/block/mmcblk0boot1
 
-service keystore2 /system/bin/keystore2 /tmp/misc/keystore2
-    user root
-    group root drmrpc readproc log
-    disabled
-    seclabel u:r:recovery:s0
-
 service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
     user root
@@ -90,7 +84,7 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
 
 service service android.system.keystore2 /system/bin/keystore2
     class early_hal
-    interface android.system.keystore2::IKeystoreService
+    interface android.system.keystore2::IKeystoreService default
     user nobody
     seclabel u:r:recovery:s0
 
