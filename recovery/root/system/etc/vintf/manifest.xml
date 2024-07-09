@@ -3,13 +3,11 @@
         manifest.xml
 -->
 <manifest version="4.0" type="framework">
-    <hal format="aidl">
+  <hal format="aidl">
         <name>android.system.keystore2</name>
-        <interface>
-            <name>IKeystoreService</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
+        <version>3</version>
+        <fqname>IKeystoreService/default</fqname>
+  </hal>
     <hal format="hidl">
         <name>android.frameworks.displayservice</name>
         <transport>hwbinder</transport>
