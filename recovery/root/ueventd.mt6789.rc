@@ -8,7 +8,22 @@
 # UFS only
 /dev/block/sda                                   0660    root    system
 /dev/block/sdb                                   0660    root    system
-/dev/block/sdc                                   0660    root    system
+
+
+/dev/null                 0666   root       root
+/dev/zero                 0666   root       root
+/dev/full                 0666   root       root
+/dev/ptmx                 0666   root       root
+/dev/tty                  0666   root       root
+/dev/random               0666   root       root
+/dev/urandom              0666   root       root
+
+# Aside from kernel threads, only prng_seeder needs access to HW RNG
+/dev/hw_random            0400   prng_seeder prng_seeder
+/dev/ashmem*              0666   root       root
+/dev/binder               0666   root       root
+/dev/hwbinder             0666   root       root
+/dev/vndbinder            0666   root       root
 
 # eMMC/UFS common
 /dev/block/by-name/misc2     0660    root    system
