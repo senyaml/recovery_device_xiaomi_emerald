@@ -649,7 +649,7 @@
     </hal>
     <hal format="aidl">
         <name>android.system.keystore2</name>
-        <version>3</version>
+        <version>1</version>
         <fqname>IKeystoreService/default</fqname>
 </hal>
     <sepolicy>
