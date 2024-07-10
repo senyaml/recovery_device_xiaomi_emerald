@@ -100,33 +100,38 @@ service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@1.
 on property:crypto.ready=1
     start vendor.keymint-mitee
 
-on property:hwservicemanager.ready=true && property:ro.boot.tee_type=2
-    stop keymaster-4-0-mitee
+on property:hwservicemanager.ready=true
+    start keymaster-4-0-mitee
 
 on property:hwservicemanager.ready=true
     start mobicore
     start vendor.gatekeeper-1-0
     start vendor.keymint-mitee
+    start keymaster-4-0-mitee
 
 on property:ro.crypto.state=unsupported
     stop mobicore
     stop vendor.gatekeeper-1-0
     stop vendor.keymint-mitee
+    stop keymaster-4-0-mitee
 
 on property:ro.crypto.state=unencrypted
     stop mobicore
     stop vendor.gatekeeper-1-0
     stop vendor.keymint-mitee
+    stop keymaster-4-0-mitee
 
 on property:twrp.decrypt.done=true
     stop mobicore
     stop vendor.gatekeeper-1-0
     stop vendor.keymint-mitee
+    stop keymaster-4-0-mitee
 
 on property:crypto.ready=0
     stop mobicore
     stop vendor.gatekeeper-1-0
     stop vendor.keymint-mitee
+    stop keymaster-4-0-mitee
 
 on post-fs-data
     mkdir /data/vendor_de 0770 system system
