@@ -37,9 +37,13 @@
 	<fqname>ISecureClock/default</fqname>
     </hal>
     <hal format="aidl">
-        <name>android.hardware.security.sharedsecret</name>
+    <name>android.hardware.security.sharedsecret</name>
 	<fqname>ISharedSecret/default</fqname>
 	</hal>
+        <hal format="aidl" override="true">
+        <name>android.hardware.vibrator</name>
+    <fqname>IVibrator/vibratorfeature</fqname>
+    </hal>
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
