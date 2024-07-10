@@ -33,8 +33,12 @@
 -->
 <manifest version="4.0" type="device" target-level="6">
     <hal format="aidl">
-		<name>android.hardware.security.sharedsecret</name>
-		<fqname>ISharedSecret/default</fqname>
+	<name>android.hardware.security.secureclock</name>
+	<fqname>ISecureClock/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>android.hardware.security.sharedsecret</name>
+	<fqname>ISharedSecret/default</fqname>
 	</hal>
     <hal format="hidl">
         <name>android.hardware.audio</name>
