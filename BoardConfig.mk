@@ -136,8 +136,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Crypto
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_FBE := true
 TW_USE_FSCRYPT_POLICY := 2
 TW_FORCE_KEYMASTER_VER := true
 
@@ -204,8 +202,5 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_emerald
 
 TW_LOAD_VENDOR_MODULES := "ft3683g.ko xiaomi.ko flashlight.ko flashlights-mt6789.ko haptic.ko"
 
-# Apex
-TW_EXCLUDE_APEX=true
-
 # Maintainer specific settings
-#TW_DEVICE_VERSION := @senyaml
+TW_DEVICE_VERSION := @senyaml
