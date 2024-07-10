@@ -88,6 +88,9 @@ service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@1.
 on property:crypto.ready=1
     start vendor.keymint-mitee
 
+on property:hwservicemanager.ready=true && property:ro.boot.tee_type=2
+    stop keymaster-4-0-mitee
+
 on property:hwservicemanager.ready=true
     start mobicore
     start vendor.gatekeeper-1-0
