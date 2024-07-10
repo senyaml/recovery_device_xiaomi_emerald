@@ -85,6 +85,12 @@ service vibratorfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfe
     group system input
     onrestart restart vibratorfeature
 
+service vibratorfeature /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature-service
+    class hal
+    user system
+    group system input
+    onrestart restart vibratorfeature
+
 service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@1.0--service.mitee
     class early_hal
     interface android.hardware.keymaster@4.0::IKeymasterDevice default
