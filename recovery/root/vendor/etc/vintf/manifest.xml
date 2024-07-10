@@ -669,6 +669,9 @@
     </hal>
     <sepolicy>
         <version>31.0</version>
+        <version>32.0</version>
+        <version>33.0</version>
+        <version>34.0</version>
     </sepolicy>
     <kernel target-level="6"/>
 </manifest>
