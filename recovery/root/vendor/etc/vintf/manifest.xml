@@ -659,11 +659,6 @@
         </interface>
         <fqname>@1.0::IVSIMService/default</fqname>
     </hal>
-    <hal format="aidl">
-        <name>android.system.keystore2</name>
-        <version>1</version>
-        <fqname>IKeystoreService/default</fqname>
-   </hal>
     <sepolicy>
         <version>31.0</version>
     </sepolicy>
