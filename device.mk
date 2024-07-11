@@ -111,5 +111,5 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 # OEM otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(DEVICE_PATH)/security/releasekey.509.pem
+    $(DEVICE_PATH)/security/releasekey.x509.pem
 
