@@ -71,12 +71,19 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     oneshot
     disabled
     seclabel u:r:recovery:s0
-
+    
+on property:vendor.sys.listeners.registered=true 
+    start vendor.secure_element
     start health-hal-2-1
     start vibratorfeature-hal-service
     umount /firmware
 
+on property:twrp.enable.fastcharge=true
+    start batterysecret
 
+on property:twrp.enable.fastcharge=false
+    stop batterysecret
+   
 service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service
     interface android.hardware.gatekeeper@1.0::IGatekeeper default
     user root
