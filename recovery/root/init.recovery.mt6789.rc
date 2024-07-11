@@ -1,6 +1,7 @@
 import /miteelog.rc
 import /tee-supplicant.rc
 import /init.vibratorfeature.rc
+import /uncrypt.rc
 
 on init
     setprop sys.usb.configfs 1
