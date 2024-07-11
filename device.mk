@@ -11,6 +11,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
+# Configure twrp common.mk
+$(call inherit-product, vendor/twrp/config/common.mk)
+
 # Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
