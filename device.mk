@@ -112,7 +112,4 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.vibratorfeature \
     android.hardware.keymaster@4.0 
 
-# OEM otacerts
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(DEVICE_PATH)/security/otacert
 
