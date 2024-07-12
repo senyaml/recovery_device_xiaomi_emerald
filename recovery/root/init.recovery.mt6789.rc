@@ -94,15 +94,15 @@ service vendor.gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-ser
 
 service vibratorfeature-hal-1-0 /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature@1.0-service
     class hal
-    user system
-    group system input
+    user root system
+    group root system input
     seclabel u:r:recovery:s0
     onrestart restart vibratorfeature
 
 service vibratorfeature /vendor/bin/hw/vendor.xiaomi.hardware.vibratorfeature-service
     class hal
-    user system
-    group system input
+    user root system
+    group root system input
     seclabel u:r:recovery:s0
     onrestart restart vibratorfeature
 
