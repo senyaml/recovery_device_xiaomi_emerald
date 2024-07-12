@@ -107,9 +107,9 @@ TARGET_RECOVERY_DEVICE_MODULES += libexpat
 RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libexpat.so
 
 TARGET_RECOVERY_DEVICE_MODULES += \
-    libion \
-    libpuresoftkeymasterdevice \
-    android.hardware.vibratorfeature \
-    android.hardware.keymaster@4.0 
+    libion.so \
+    libpuresoftkeymasterdevice.so \
+    android.hardware.vibratorfeature.so \
+    android.hardware.keymaster@4.0.so 
 
 
