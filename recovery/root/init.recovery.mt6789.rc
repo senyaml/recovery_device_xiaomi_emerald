@@ -111,9 +111,6 @@ service vendor.keymint-mitee /vendor/bin/hw/android.hardware.security.keymint@1.
     user nobody
     seclabel u:r:recovery:s0
 
-on property:crypto.ready=1
-    start vendor.keymint-mitee
-
 on property:hwservicemanager.ready=true
     start keymaster-4-0-mitee
 
