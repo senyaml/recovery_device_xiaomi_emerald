@@ -106,6 +106,10 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 TARGET_RECOVERY_DEVICE_MODULES += libexpat
 RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libexpat.so
 
+# OEM otacerts
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    $(DEVICE_PATH)/security/otacert
+    
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion.so \
     libpuresoftkeymasterdevice.so \
