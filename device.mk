@@ -44,19 +44,43 @@ PRODUCT_PACKAGES += \
     
 # AB
 AB_OTA_UPDATER := true
+TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 
 # A/B
 AB_OTA_PARTITIONS += \
+    apusys \
+    audio_dsp \
     boot \
+    ccu \
+    dpm \
     dtbo \
+    gpueb \
+    gz \
+    lk \
+    logo \
+    mcf_ota \
+    mcupm \
+    md1img \
+    mvpu_algo \
+    odm \
+    odm_dlkm \
+    pi_img \
+    preloader_raw \
     product \
+    scp \
+    spmfw \
+    sspm \
     system \
     system_ext \
+    tee \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor \
+    vcp \
     vendor \
-    vendor_boot
+    vendor_boot \
+    vendor_dlkm \
+    mi_ext
     
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -71,7 +95,7 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_vendor=true
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 34
+PRODUCT_TARGET_VNDK_VERSION := 33
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 31
@@ -90,30 +114,30 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mtk_plpath_utils \
     mtk_plpath_utils.recovery
-    
-# Keymaster
+
+# Drm
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0
+    android.hardware.drm@1.4
 
 # Additional configs
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.graphics.common@1.0.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/vendor.hardware.vibratorfeature.IVibratorExt-V1-ndk_platform.so \
 	
-	
-	
-TARGET_RECOVERY_DEVICE_MODULES += libexpat
-RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libexpat.so
-
-# OEM otacerts
-PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(DEVICE_PATH)/security/otacert
     
 TARGET_RECOVERY_DEVICE_MODULES += \
-    libion.so \
-    libpuresoftkeymasterdevice.so \
-    android.hardware.vibratorfeature.so \
-    android.hardware.keymaster@4.0.so 
+    android.hardware.graphics.common@1.0 \
+    libion \
+    libxml2 \
+    android.hardware.vibratorfeature \
+
+    #hidl
+    PRODUCT_ENFORCE_VINTF_MANIFEST += true
+
+    #namepcas
+    PRODUCT_SONG_NAMESPACES += $(DEVICE_PATH)
 
 
